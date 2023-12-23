@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import relode from "./img/relode.png";
+import reload from "./img/reload.png";
+import twitter from "./img/twitter.png";
 
 const View = () => {
   const [quoets, setQuoets] = useState([]);
@@ -22,7 +23,7 @@ const View = () => {
   }, []); // Empty dependency array ensures this effect runs once on mount
 
   const [quoet, setQuoet] = useState({
-    text: "I'am not fighting because i want to win I'm fighting because I have to win!!",
+    text: "I'am not fighting because I want to win I'm fighting because I have to win!!",
     author: "Ichigo Kurosaki",
   });
 
@@ -39,6 +40,12 @@ const View = () => {
     }
   };
 
+  const twit = () => {
+    window.open(
+      `https://twitter.com/intent/tweet?text=${quoet.text}-${quoet.author} `
+    );
+  };
+
   return (
     <div className="container">
       <div className="text">
@@ -47,11 +54,19 @@ const View = () => {
         <div className="line">
           <div className="footer">
             <div className="img">
-              <img onClick={random} src={relode} alt="" height="30" />
+              <img onClick={random} src={reload} alt="" height="30" />
+
+              <img
+                className="nd"
+                onClick={twit}
+                src={twitter}
+                alt=""
+                height="30"
+              />
             </div>
 
             <div className="autor_name">
-              <h3>-{quoet.author}</h3>
+              <h3>-{quoet.author.split(",")[0]}</h3>
             </div>
           </div>
         </div>
